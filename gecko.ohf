@@ -1,4 +1,4 @@
-##2016-02-15 07:26:32##
+##2016-02-15 07:46:17##
 
 ##notes##
  
@@ -2169,9 +2169,9 @@ AKo AQo AJo
     [ call<=0 ] ? {
          [ pot<=10*bblind ] ? pot*.70:
          [ pot<=25*bblind ] ? pot*.65 :
-         [ pot<=50*bblind ] ? pot*.6 :
-         [ pot<=80*bblind ] ? pot*.55 :
-         [ pot>80*bblind                   ] ? {
+         [ pot<=35*bblind ] ? pot*.6 :
+         [ pot<=50*bblind ] ? pot*.55 :
+         [ pot>50*bblind                   ] ? {
             [ f$prwin<=0.8 ] ? pot*.33	:
             [ f$prwin>0.90 ] ? balance :
             [ f$prwin>0.80 ] ? pot*.35	: 0 } : 0 } :
@@ -2194,17 +2194,17 @@ AKo AQo AJo
             [ nbetsround1>1  ] ? balance                  : 0 } : 0 } : 0 } :
 [ betround==3 ] ? {
     [ call<=bblind ] ? {
-        [ pot<=25*bblind ] ? pot*.70 :
-        [ pot>25*bblind  ] ? pot*.60 : 0 } :
+        [ pot<=12*bblind ] ? pot*.70 :
+        [ pot>12*bblind  ] ? pot*.60 : 0 } :
     [ call>bblind ] ? {
         [ call<=potcommon*.33 ] ? pot :
         [ call> potcommon*.33 ] ? f$currentbet_raischair*2.5 : 0 } : 0 } :
 [ betround==4 ] ? {
     [ call<=bblind ]                  ? {
-        [ pot<=10*bblind && f$prwin>0.80 ] ? pot     :
-        [ pot<=10*bblind ] ? pot*0.65     :
-        [ pot>10*bblind && f$prwin>0.80 ] ? pot*.60 :
-        [ pot>10*bblind ] ? pot*.33 : 0 } :
+        [ pot<=12*bblind && f$prwin>0.80 ] ? pot     :
+        [ pot<=12*bblind ] ? pot*0.65     :
+        [ pot>12*bblind && f$prwin>0.80 ] ? pot*.60 :
+        [ pot>12*bblind ] ? pot*.33 : 0 } :
     [ call>bblind ] ? {
         [ call<=potcommon*.33 ] ? pot :
         [ call> potcommon*.33 ] ? f$currentbet_raischair*2.5 : 0 } : 0 } : 0 } :
@@ -7656,7 +7656,7 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 [ f$actionpostflop_3a && nplayersplaying==2 ] ? {
 
-			[ pt_wssd_headsup >.60 ] 		? f$prwin>.75 :
+			[ pt_wssd_headsup >.58 ] 		? f$prwin>.75 :
 			[ pt_wssd_headsup >.52 ] 		? f$prwin>.70 :
 			[ pt_wssd_headsup <=.52] 		? f$prwin>.65 : f$prwin>.65
 		} :
@@ -7715,7 +7715,7 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 [ f$actionpostflop_3a && nplayersplaying==2 ] ? {
 
-			[ pt_wssd_headsup >.60 ] 		? f$prwin>.75 :
+			[ pt_wssd_headsup >.58 ] 		? f$prwin>.75 :
 			[ pt_wssd_headsup >.52 ] 		? f$prwin>.70 :
 			[ pt_wssd_headsup <=.52] 		? f$prwin>.65 :
 
@@ -7723,7 +7723,7 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 [ f$actionpostflop_3 && nplayersplaying==2 ] ? {
 
-			[ pt_wssd_headsup >.60 ] 		? f$prwin>.80 :
+			[ pt_wssd_headsup >.58 ] 		? f$prwin>.80 :
 			[ pt_wssd_headsup >.52 ] 		? f$prwin>.78 :
 			[ pt_wssd_headsup <=.52] 		? f$prwin>.75 :
 
@@ -7732,7 +7732,7 @@ betround>1 ? balance-f$mycurrentbet : 0
 [ f$actionpostflop_3 ] ? 	[ nplayersplaying>=3 ] ? f$prwin>.75 : f$prwin>.75 :
 [ f$actionpostflop_4 ] ? {
 
-    [ nplayersplaying==2 && pt_wssd_headsup >.60 			] ? f$prwin>.80 :
+    [ nplayersplaying==2 && pt_wssd_headsup >.58			] ? f$prwin>.80 :
     [ nplayersplaying==2 && pt_wssd_headsup >.55 			] ? f$prwin>.75 :
     [ nplayersplaying==2 && pt_wssd_headsup <=.55		 	] ? f$prwin>.70 :
     [ nplayersplaying==2																				 ] ? f$prwin>.80 :
@@ -7775,22 +7775,22 @@ betround>1 ? balance-f$mycurrentbet : 0
 [ f$actionpostflop_2 ] ? f$prwin1>.50 :
 
 [ f$actionpostflop_3a ] ? {
-			[ nplayersplaying==2 && pt_wssd_headsup >.60 		] 		? f$prwin>.70 :
+			[ nplayersplaying==2 && pt_wssd_headsup >.58 		] 		? f$prwin>.70 :
     [ nplayersplaying==2 && pt_wssd_headsup <=.50 	]		 	? f$prwin>.65 :
     [ nplayersplaying==2 																		 		]		 	? f$prwin>.70 :
 
     [ nplayersplaying>=3 ] ? f$prwin>.65 : 0 } :
 
 [ f$actionpostflop_3 ] ? {
-			[ nplayersplaying==2 && pt_wssd_headsup >.60 		] 		? f$prwin>.75 :
-    [ nplayersplaying==2 && pt_wssd_headsup <=.50 	]		 	? f$prwin>.60 :
+			[ nplayersplaying==2 && pt_wssd_headsup >.58 		] 		? f$prwin>.75 :
+    [ nplayersplaying==2 && pt_wssd_headsup <=.50 	]		 	? f$prwin>.70 :
     [ nplayersplaying==2 																		 		]		 	? f$prwin>.75 :
 
     [ nplayersplaying>=3 ] ? f$prwin>.70 : 0 } :
 
 [ f$actionpostflop_4 ] ? {
 
-			[ nplayersplaying==2 && pt_wssd_headsup >.60 		] 		? f$prwin>.80 :
+			[ nplayersplaying==2 && pt_wssd_headsup >.58 		] 		? f$prwin>.80 :
     [ nplayersplaying==2 && pt_wssd_headsup <=.50 	]		 	? f$prwin>.70 :
 
     [ nplayersplaying==2 ] ? f$prwin>.80 :
@@ -10758,17 +10758,6 @@ betround==2 ? (f$foldequity+f$reducewinchance_when_have_twopair) : 0
 
 
 ##f$turn_alli##
-0
-
-
-
-
-
-
-
-
-
-
 
 ##f$turn_call##
 [ f$Odds_and_Outs          ] ? 1 :
